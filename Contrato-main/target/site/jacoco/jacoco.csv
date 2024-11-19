@@ -1,0 +1,13 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+arriendo,com.finca.arriendo.model,Tipo,0,15,0,0,0,3,0,1,0,1
+arriendo,com.finca.arriendo.model,Solicitud,72,0,0,0,25,0,2,0,2,0
+arriendo,com.finca.arriendo.model,Finca,0,75,0,0,0,26,0,2,0,2
+arriendo,com.finca.arriendo.model,Estado,0,21,0,0,0,4,0,1,0,1
+arriendo,com.finca.arriendo,ArriendoApplication,5,3,0,0,2,1,1,1,1,1
+arriendo,com.finca.arriendo,ModelMapperConfiguration,0,262,0,0,0,66,0,8,0,8
+arriendo,com.finca.arriendo.services,SolicitudService,0,107,1,1,0,23,1,7,0,7
+arriendo,com.finca.arriendo.services,UsuarioService,0,119,2,2,0,26,2,8,0,8
+arriendo,com.finca.arriendo.services,FincaService,0,119,2,2,0,26,2,8,0,8
+arriendo,com.finca.arriendo.controllers,FincaController,0,32,0,0,0,8,0,7,0,7
+arriendo,com.finca.arriendo.controllers,SolicitudController,0,27,0,0,0,7,0,6,0,6
+arriendo,com.finca.arriendo.controllers,UsuarioController,0,32,0,0,0,8,0,7,0,7

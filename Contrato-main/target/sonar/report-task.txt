@@ -1,0 +1,6 @@
+projectKey=Entrega1-grupo-3
+serverUrl=http://sonarjaveriana.dynaco.co
+serverVersion=10.6.0.92116
+dashboardUrl=http://sonarjaveriana.dynaco.co/dashboard?id=Entrega1-grupo-3
+ceTaskId=02e209dc-3e32-4e04-99ef-9b2cb51f040f
+ceTaskUrl=http://sonarjaveriana.dynaco.co/api/ce/task?id=02e209dc-3e32-4e04-99ef-9b2cb51f040f

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Solicitud.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">arriendo</a> &gt; <a href="index.source.html" class="el_package">com.finca.arriendo.model</a> &gt; <span class="el_source">Solicitud.java</span></div><h1>Solicitud.java</h1><pre class="source lang-java linenums">package com.finca.arriendo.model;
+
+import java.util.Date;
+
+import org.hibernate.annotations.SQLDelete;
+
+import io.micrometer.common.lang.Nullable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@SQLDelete(sql = &quot;UPDATE solicitud SET deleted = true WHERE id=?&quot;)
+public class Solicitud {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private Estado estado;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;arrendatario_id&quot;)
+    private Usuario arrendatario;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;arrendador_id&quot;)
+    private Usuario arrendador;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;finca_id&quot;)
+    private Finca finca;
+
+    private Date fechaEntrega;
+    private Date fechaSalida;
+
+    @Nullable
+    private Integer califFinca; // Cambiado a Integer para manejar valores nulos
+
+    @Nullable
+    private Integer califArrendatario; // Cambiado a Integer para manejar valores nulos
+
+    private float precio;
+    private int cantPersonas;
+
+<span class="nc" id="L60">    private boolean deleted = false;</span>
+
+    public Solicitud(Usuario arrendatario, Usuario arrendador, Finca finca, Date fechaEntrega, Date fechaSalida,
+<span class="nc" id="L63">            Integer califFinca, Integer califArrendatario, float precio, int cantPersonas, boolean deleted, Estado estado) {</span>
+<span class="nc" id="L64">        this.arrendatario = arrendatario;</span>
+<span class="nc" id="L65">        this.arrendador = arrendador;</span>
+<span class="nc" id="L66">        this.finca = finca;</span>
+<span class="nc" id="L67">        this.fechaEntrega = fechaEntrega;</span>
+<span class="nc" id="L68">        this.fechaSalida = fechaSalida;</span>
+<span class="nc" id="L69">        this.califFinca = califFinca;</span>
+<span class="nc" id="L70">        this.califArrendatario = califArrendatario;</span>
+<span class="nc" id="L71">        this.precio = precio;</span>
+<span class="nc" id="L72">        this.cantPersonas = cantPersonas;</span>
+<span class="nc" id="L73">        this.deleted = deleted;</span>
+<span class="nc" id="L74">        this.estado = estado;</span>
+<span class="nc" id="L75">    }</span>
+
+    public Solicitud(Usuario arrendatario, Usuario arrendador, Finca finca, Date fechaEntrega, Date fechaSalida,
+<span class="nc" id="L78">            float precio, int cantPersonas, boolean deleted, Estado estado) {</span>
+<span class="nc" id="L79">        this.arrendatario = arrendatario;</span>
+<span class="nc" id="L80">        this.arrendador = arrendador;</span>
+<span class="nc" id="L81">        this.finca = finca;</span>
+<span class="nc" id="L82">        this.fechaEntrega = fechaEntrega;</span>
+<span class="nc" id="L83">        this.fechaSalida = fechaSalida;</span>
+<span class="nc" id="L84">        this.precio = precio;</span>
+<span class="nc" id="L85">        this.cantPersonas = cantPersonas;</span>
+<span class="nc" id="L86">        this.deleted = deleted;</span>
+<span class="nc" id="L87">        this.estado = estado;</span>
+<span class="nc" id="L88">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

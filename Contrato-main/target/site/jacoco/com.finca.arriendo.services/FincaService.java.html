@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FincaService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">arriendo</a> &gt; <a href="index.source.html" class="el_package">com.finca.arriendo.services</a> &gt; <span class="el_source">FincaService.java</span></div><h1>FincaService.java</h1><pre class="source lang-java linenums">package com.finca.arriendo.services;
+
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.finca.arriendo.dto.FincaDto;
+import com.finca.arriendo.model.Finca;
+import com.finca.arriendo.repository.FincaRepository;
+
+@Service
+<span class="fc" id="L16">public class FincaService {</span>
+
+    @Autowired
+    FincaRepository fincaRepository;
+    @Autowired
+    ModelMapper modelMapper;
+
+    public FincaDto get(Long id) {
+<span class="fc" id="L24">        Optional&lt;Finca&gt; finca = fincaRepository.findById(id);</span>
+<span class="fc" id="L25">        FincaDto fincaDto = null;</span>
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">        if (finca.isPresent()) {</span>
+<span class="fc" id="L27">            fincaDto = modelMapper.map(finca.get(), FincaDto.class);</span>
+        }
+<span class="fc" id="L29">        return fincaDto;</span>
+    }
+
+    public FincaDto get(String nombre) {
+<span class="fc" id="L33">        Finca finca = fincaRepository.findByNombre(nombre);</span>
+<span class="fc" id="L34">        FincaDto fincaDto = null;</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if (finca != null) {</span>
+<span class="fc" id="L36">            fincaDto = modelMapper.map(finca, FincaDto.class);</span>
+        }
+<span class="fc" id="L38">        return fincaDto;</span>
+    }
+
+    public List&lt;FincaDto&gt; list() {
+<span class="fc" id="L42">        List&lt;Finca&gt; Lfinca = (List&lt;Finca&gt;) fincaRepository.findAll();</span>
+<span class="fc" id="L43">        List&lt;FincaDto&gt; LfincaDtos = Lfinca.stream().map(finca -&gt; modelMapper.map(finca, FincaDto.class))</span>
+<span class="fc" id="L44">                .collect(Collectors.toList());</span>
+<span class="fc" id="L45">        return LfincaDtos;</span>
+    }
+
+    public FincaDto saveNew(FincaDto fincaDto) {
+<span class="fc" id="L49">        Finca finca = modelMapper.map(fincaDto, Finca.class);</span>
+<span class="fc" id="L50">        finca = fincaRepository.save(finca);</span>
+<span class="fc" id="L51">        fincaDto = modelMapper.map(finca, FincaDto.class);</span>
+<span class="fc" id="L52">        return fincaDto;</span>
+    }
+
+    public FincaDto save(FincaDto fincaDto) {
+<span class="fc" id="L56">        Finca finca = modelMapper.map(fincaDto, Finca.class);</span>
+<span class="fc" id="L57">        finca = fincaRepository.save(finca);</span>
+<span class="fc" id="L58">        fincaDto = modelMapper.map(finca, FincaDto.class);</span>
+<span class="fc" id="L59">        return fincaDto;</span>
+    }
+
+    public void delete(FincaDto fincaDto) {
+<span class="fc" id="L63">        Finca finca = modelMapper.map(fincaDto, Finca.class);</span>
+<span class="fc" id="L64">        fincaRepository.delete(finca);</span>
+
+<span class="fc" id="L66">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
